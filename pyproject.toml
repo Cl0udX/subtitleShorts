@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "subtitleshort"
+version = "0.1.0"
+description = "Subtítulos automáticos para shorts: Whisper local, estilos personalizables y render sin perder calidad."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "faster-whisper>=1.1",
+    "numpy",
+    "PyYAML>=6",
+    "fonttools>=4.40",
+    "uharfbuzz>=0.39",
+    "Pillow>=10",
+]
+
+[project.optional-dependencies]
+# Whisper on NVIDIA GPUs (CTranslate2 needs cuBLAS; on Linux also cuDNN).
+gpu = [
+    "nvidia-cublas-cu12",
+    "nvidia-cudnn-cu12>=9; sys_platform == 'linux'",
+]
+dev = ["pytest"]
+
+[project.scripts]
+subtitleshort = "subtitleshort.cli:main"
+
+[tool.setuptools]
+packages = ["subtitleshort"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

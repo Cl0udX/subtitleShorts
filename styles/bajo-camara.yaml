@@ -1,0 +1,52 @@
+# Estilo para shorts con la cámara arriba: subtítulos justo debajo de la cámara.
+# Todas las medidas en px están pensadas para un video de 1080x1920 (se escalan solas).
+# Opciones completas y explicadas: styles/default.yaml
+
+font: Montserrat-ExtraBold.ttf
+size: 80
+uppercase: true
+color: "#FFFFFF"
+
+outline:
+  width: 7
+  color: "#000000"
+
+shadow:
+  depth: 4
+  color: "#000000"
+  opacity: 0.5
+
+background:
+  enabled: false          # true = caja redondeada detrás del texto
+  color: "#000000"
+  opacity: 0.55
+  padding: [30, 16]
+  radius: 22
+
+highlight:                # la palabra que se está diciendo
+  enabled: true
+  color: "#FFE81F"
+
+position:
+  x: 50                   # % desde la izquierda
+  y: 38                   # % desde arriba (cada 1 = 19 px). 38 = justo debajo del logo
+  anchor: top             # el borde superior del subtítulo queda en y
+
+# Cambios de posición durante el video (opcional). Ejemplo:
+# position_changes:
+#   - from: 12.5          # segundos, o "1:05.2"
+#     to: 18
+#     y: 75
+
+max_words: 3
+animation: pop
+
+transcription:
+  model: large-v3-turbo
+  language: es
+  vocabulary: [PostInCloud]   # nombres o palabras raras que Whisper debe reconocer
+
+video:
+  encoder: x264
+  crf: 12
+  preset: slow

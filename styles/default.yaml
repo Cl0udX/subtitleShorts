@@ -1,0 +1,76 @@
+# =====================================================================
+#  subtitleshort - TODAS las opciones de estilo, explicadas.
+#  Copia este archivo, cámbiale el nombre y ajústalo a tu gusto.
+#  Las medidas en px son para un video vertical de 1080x1920; en otros
+#  tamaños se escalan solas. Los colores van SIEMPRE entre comillas.
+# =====================================================================
+
+# --- Texto -----------------------------------------------------------
+font: Montserrat-ExtraBold.ttf   # archivo en fonts/ (o el nombre de una fuente instalada, ej. "Impact")
+size: 80                         # tamaño de letra en px, como en Photoshop o CapCut
+uppercase: true                  # todo en MAYÚSCULAS
+letter_spacing: 0                # espacio extra entre letras, en px
+color: "#FFFFFF"
+
+outline:                         # borde de las letras
+  width: 6                       # 0 = sin borde
+  color: "#000000"
+
+shadow:                          # sombra
+  depth: 0                       # distancia en px (0 = sin sombra)
+  color: "#000000"
+  opacity: 0.6                   # 0 = invisible, 1 = sólida
+
+background:                      # caja detrás del texto
+  enabled: false
+  color: "#000000"
+  opacity: 0.6
+  padding: [28, 14]              # margen interior: [horizontal, vertical] en px
+  radius: 20                     # redondeo de las esquinas (0 = rectas)
+
+highlight:                       # resaltar la palabra que se está diciendo
+  enabled: true
+  color: "#FFE81F"               # color de esa palabra
+  background:                    # color de una "pastilla" detrás de esa palabra, ej. "#7C3AED" (vacío = sin pastilla)
+  background_opacity: 1
+  padding: [14, 8]
+  radius: 14
+
+# --- Posición --------------------------------------------------------
+position:
+  x: 50                          # % desde la izquierda (50 = centrado)
+  y: 70                          # % desde arriba
+  anchor: center                 # qué parte del subtítulo queda en "y": top | center | bottom
+
+position_changes:                # cambios de posición durante el video
+  # Cada cambio aplica a los subtítulos que empiezan dentro de su rango.
+  # - from: 12.5                 # segundos, o "1:05.2"
+  #   to: 18                     # opcional; si falta, hasta el final
+  #   y: 30
+  # - from: "0:40"
+  #   y: 85
+  #   anchor: bottom
+
+# --- Ritmo -----------------------------------------------------------
+max_words: 3                     # palabras máximas por subtítulo
+max_chars: 22                    # caracteres máximos por subtítulo
+max_width: 90                    # ancho máximo en % del video (si no cabe, se divide o se achica)
+animation: pop                   # pop | fade | none
+remove_punctuation: true         # quita . , ; : (deja ¿? ¡!)
+
+replacements:                    # correcciones automáticas, sin importar mayúsculas
+  # "post in cloud": "PostInCloud"
+  # "ehm": ""                    # vacío = borrar la palabra
+
+# --- Transcripción (Whisper, corre en tu PC) -------------------------
+transcription:
+  model: large-v3-turbo          # tiny | base | small | medium | large-v3 | large-v3-turbo
+  language:                      # es, en, pt... (vacío = detectar solo)
+  vocabulary: []                 # nombres o palabras raras para que Whisper las reconozca
+  device: auto                   # auto | cuda | cpu
+
+# --- Video de salida -------------------------------------------------
+video:
+  encoder: x264                  # x264 = máxima calidad | nvenc = GPU NVIDIA, más rápido
+  crf: 12                        # calidad: menor = mejor (12 = visualmente idéntico al original)
+  preset: slow                   # medium | slow | slower: más lento = archivo más liviano

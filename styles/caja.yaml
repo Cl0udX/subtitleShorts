@@ -1,0 +1,32 @@
+# Ejemplo: texto blanco sobre una caja oscura redondeada, y una "pastilla"
+# de color detrás de la palabra que se está diciendo.
+# Opciones completas y explicadas: styles/default.yaml
+
+font: Montserrat-Black.ttf
+size: 74
+uppercase: true
+color: "#FFFFFF"
+
+outline:
+  width: 0
+
+background:
+  enabled: true
+  color: "#000000"
+  opacity: 0.6
+  padding: [30, 18]
+  radius: 24
+
+highlight:
+  enabled: true
+  color: "#FFFFFF"
+  background: "#7C3AED"
+  padding: [12, 8]
+  radius: 14
+
+position:
+  x: 50
+  y: 72
+
+max_words: 3
+animation: pop
